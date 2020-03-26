@@ -914,6 +914,9 @@ body {
         justify-content: space-between;
         margin-bottom: 1.5rem;
         height: 2.5rem;
+        .label-name {
+          height: 100%;
+        }
         .email-field {
           height: 100%;
           background-color: rgb(218, 218, 218);

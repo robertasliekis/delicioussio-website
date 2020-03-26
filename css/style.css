@@ -1657,6 +1657,10 @@ body {
   height: 2.5rem;
 }
 
+.footer-section .footer-top .contact-us .email .label-name {
+  height: 100%;
+}
+
 .footer-section .footer-top .contact-us .email .email-field {
   height: 100%;
   background-color: #dadada;
