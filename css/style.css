@@ -2193,6 +2193,7 @@ body {
   }
   .background-image1 {
     background-size: 175% 150%;
+    height: calc(100vh - 2.5rem - 56px);
   }
   .background-image1 .text-container .content-text {
     font-size: 1.5rem;

@@ -1,11 +1,10 @@
 if (window.innerWidth <= 1024) {
   $(".overlay-menu").height(window.innerHeight);
-  $(".background-image1").height(window.outerHeight - 56);
 }
 
 window.addEventListener("resize", () => {
   $(".overlay-menu").height(window.innerHeight);
-  $(".background-image1").height(window.outerHeight - 56);
+
 });
 
 //Sticky nav bar start
