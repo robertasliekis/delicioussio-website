@@ -9,6 +9,8 @@
 
 :root {
   --global-color-text: rgb(49, 49, 49);
+  --scroll-bar-width: 17px;
+
   --global-color-background: black;
   --global-container-width1: 60%;
   --global-container-width2: calc(100% / 3);
@@ -43,6 +45,10 @@ a {
   color: black;
 }
 
+body {
+  width: calc(100vw - var(--scroll-bar-width));
+}
+
 html,
 body {
   padding: 0;
@@ -53,6 +59,12 @@ body {
 @mixin flexCenter {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+@mixin flexCenterBetween {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -107,14 +119,21 @@ body {
 //Webpage body start
 .website-wrapper {
   width: 100%;
-  background-color: white;
   @include flexCenterColumn();
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.scroll-disabled {
+  height: calc(100vh - 56px);
+  height: 100vh;
 }
 
 //Navigation bar start
 .navbar-wrapper {
   position: absolute;
   width: 100%;
+  width: calc(100vw - var(--scroll-bar-width));
   height: 0;
   top: 0;
   z-index: 2;
@@ -126,42 +145,32 @@ body {
   background-color: transparent;
   width: 100%;
   height: 6rem;
-  margin-top: 1rem;
-  //background-color: red;
-  .social-media-icons {
-    width: 6rem;
-    @include flexCenter();
-    justify-content: space-between;
-    margin-left: 2rem;
-    .icon {
-      color: white;
-    }
-  }
+  padding: 0 1rem;
+  transition: 0.5s all ease;
   .website-logo {
     height: 4rem;
     width: 4rem;
-    border: 2px solid white;
+    border: 3px solid white;
     @include flexCenter();
     cursor: pointer;
     .symbol {
       color: white;
       font-size: 1.5rem;
+      font-weight: 600;
     }
   }
   .burger-menus {
     position: relative;
-    margin-right: 2rem;
-    margin-left: 4rem;
     user-select: none;
     .burger-menu {
       @include flexCenterColumn();
       justify-content: space-between;
-      height: 1rem;
+      height: 1.5rem;
       cursor: pointer;
       transition: 0.2s all ease;
       .line {
-        width: 2rem;
-        height: 0.15rem;
+        width: 3rem;
+        height: 3px;
         border-radius: 0.1rem;
         background-color: white;
         transition: 0.2s all ease;
@@ -177,7 +186,6 @@ body {
       left: 0;
       height: 2rem;
       width: 2rem;
-      background-color: red;
       display: none;
       z-index: 3;
     }
@@ -206,7 +214,7 @@ body {
 }
 
 .burger-menu-sticky1 {
-  position: sticky;
+  position: fixed;
   top: 0;
   transform: translate(0px, -6rem);
   height: 0rem;
@@ -214,7 +222,7 @@ body {
 
 .burger-menu-sticky2,
 .burger-menu-inview {
-  position: sticky;
+  position: fixed;
   top: 0;
   transition: all 0.5s ease;
   .navbar {
@@ -246,10 +254,10 @@ body {
 
 //Overlay menu start
 .overlay-menu-wrapper {
-  position: sticky;
+  position: fixed;
   top: 0;
   transform: translate(0px, 0px);
-  width: 100%;
+  width: calc(100vw - var(--scroll-bar-width));
   height: 0;
   z-index: -1;
   opacity: 0;
@@ -257,10 +265,14 @@ body {
 }
 
 .overlay-menu {
+  position: relative;
   @include flexCenterColumn();
   width: 100%;
   height: 100vh;
   background-color: black;
+  .menu-item-container {
+    @include flexCenterColumn();
+  }
   .menu-item {
     color: white;
     display: none;
@@ -273,11 +285,36 @@ body {
     transform: scale(1.05);
     transition: 0.3s transform ease;
   }
+  .social-media-icons {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    bottom: 1rem;
+    left: 50%;
+    margin-top: auto;
+    @include flexCenterBetween();
+    width: 10rem;
+    opacity: 0;
+    transition: 1s all ease;
+    transition-delay: 2s;
+    .icon {
+      color: white;
+      font-size: 2rem;
+    }
+  }
 }
 
 .overlay-menu-visible {
   z-index: 1;
   opacity: 1;
+  .overlay-menu {
+    .social-media-icons {
+      opacity: 1;
+    }
+  }
+}
+
+.transition-delay {
+  transition-delay: 0.5s !important;
 }
 
 .overlay-menu .menu-item-display {
@@ -351,19 +388,24 @@ body {
 //Main section start
 //Background parallax start
 .background-image1 {
-  background-image: url(../images/background01.webp);
+  background-image: url(../images/background01b.webp);
   background-size: cover;
   width: 100%;
   height: 100vh;
   background-position: center;
-  margin-top: 0.5rem;
   @include flexCenter();
-  .content-text {
-    font-size: 4rem;
-    width: var(--global-container-width1);
-    color: white;
-    animation: appear 1s;
+  .text-container {
+    height: 100%;
+    width: 100%;
+    @include flexCenter();
+    .content-text {
+      font-size: 4rem;
+      width: var(--global-container-width1);
+      color: white;
+      animation: appear 1s;
+    }
   }
+
   @keyframes appear {
     0% {
       transform: translateY(200px);
@@ -1027,6 +1069,7 @@ body {
 @media only screen and (max-width: 1024px) {
   :root {
     --global-container-width1: 90%;
+    --scroll-bar-width: 0px;
   }
 
   .section-header {
@@ -1036,8 +1079,12 @@ body {
   }
 
   .background-image1 {
-    .content-text {
-      font-size: 3rem;
+    background-position: right;
+    background-size: 150% 150%;
+    .text-container {
+      .content-text {
+        font-size: 2.5rem;
+      }
     }
   }
 
@@ -1270,12 +1317,11 @@ body {
   }
 
   .background-image1 {
-    width: 100%;
-    height: 100vh;
-    background-position: center;
-    margin-top: 0.5rem;
-    .content-text {
-      font-size: 2rem;
+    background-size: 175% 150%;
+    .text-container {
+      .content-text {
+        font-size: 1.5rem;
+      }
     }
   }
 

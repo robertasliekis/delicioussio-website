@@ -8,6 +8,7 @@
 
 :root {
   --global-color-text: rgb(49, 49, 49);
+  --scroll-bar-width: 17px;
   --global-color-background: black;
   --global-container-width1: 60%;
   --global-container-width2: calc(100% / 3);
@@ -41,6 +42,10 @@ p {
 a {
   text-decoration: none;
   color: black;
+}
+
+body {
+  width: calc(100vw - var(--scroll-bar-width));
 }
 
 html,
@@ -128,7 +133,6 @@ body {
 
 .website-wrapper {
   width: 100%;
-  background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -142,11 +146,21 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow: hidden;
+}
+
+.scroll-disabled {
+  height: calc(100vh - 56px);
+  height: 100vh;
 }
 
 .navbar-wrapper {
   position: absolute;
   width: 100%;
+  width: calc(100vw - var(--scroll-bar-width));
   height: 0;
   top: 0;
   z-index: 2;
@@ -168,34 +182,15 @@ body {
   background-color: transparent;
   width: 100%;
   height: 6rem;
-  margin-top: 1rem;
-}
-
-.navbar .social-media-icons {
-  width: 6rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-left: 2rem;
-}
-
-.navbar .social-media-icons .icon {
-  color: white;
+  padding: 0 1rem;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
 }
 
 .navbar .website-logo {
   height: 4rem;
   width: 4rem;
-  border: 2px solid white;
+  border: 3px solid white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -211,12 +206,11 @@ body {
 .navbar .website-logo .symbol {
   color: white;
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .navbar .burger-menus {
   position: relative;
-  margin-right: 2rem;
-  margin-left: 4rem;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -240,15 +234,15 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 1rem;
+  height: 1.5rem;
   cursor: pointer;
   -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
 }
 
 .navbar .burger-menus .burger-menu .line {
-  width: 2rem;
-  height: 0.15rem;
+  width: 3rem;
+  height: 3px;
   border-radius: 0.1rem;
   background-color: white;
   -webkit-transition: 0.2s all ease;
@@ -266,7 +260,6 @@ body {
   left: 0;
   height: 2rem;
   width: 2rem;
-  background-color: red;
   display: none;
   z-index: 3;
 }
@@ -296,8 +289,7 @@ body {
 }
 
 .burger-menu-sticky1 {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   -webkit-transform: translate(0px, -6rem);
           transform: translate(0px, -6rem);
@@ -306,8 +298,7 @@ body {
 
 .burger-menu-sticky2,
 .burger-menu-inview {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -350,12 +341,11 @@ body {
 }
 
 .overlay-menu-wrapper {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   -webkit-transform: translate(0px, 0px);
           transform: translate(0px, 0px);
-  width: 100%;
+  width: calc(100vw - var(--scroll-bar-width));
   height: 0;
   z-index: -1;
   opacity: 0;
@@ -364,6 +354,7 @@ body {
 }
 
 .overlay-menu {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -380,6 +371,22 @@ body {
   width: 100%;
   height: 100vh;
   background-color: black;
+}
+
+.overlay-menu .menu-item-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .overlay-menu .menu-item {
@@ -401,9 +408,47 @@ body {
   transition: 0.3s transform ease, 0.3s -webkit-transform ease;
 }
 
+.overlay-menu .social-media-icons {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  bottom: 1rem;
+  left: 50%;
+  margin-top: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 10rem;
+  opacity: 0;
+  -webkit-transition: 1s all ease;
+  transition: 1s all ease;
+  -webkit-transition-delay: 2s;
+          transition-delay: 2s;
+}
+
+.overlay-menu .social-media-icons .icon {
+  color: white;
+  font-size: 2rem;
+}
+
 .overlay-menu-visible {
   z-index: 1;
   opacity: 1;
+}
+
+.overlay-menu-visible .overlay-menu .social-media-icons {
+  opacity: 1;
+}
+
+.transition-delay {
+  -webkit-transition-delay: 0.5s !important;
+          transition-delay: 0.5s !important;
 }
 
 .overlay-menu .menu-item-display {
@@ -522,7 +567,6 @@ body {
   width: 100%;
   height: 100vh;
   background-position: center;
-  margin-top: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -534,7 +578,21 @@ body {
           align-items: center;
 }
 
-.background-image1 .content-text {
+.background-image1 .text-container {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.background-image1 .text-container .content-text {
   font-size: 4rem;
   width: var(--global-container-width1);
   color: white;
@@ -1821,6 +1879,7 @@ body {
 @media only screen and (max-width: 1024px) {
   :root {
     --global-container-width1: 90%;
+    --scroll-bar-width: 0px;
   }
   .section-header {
     display: -webkit-box;
@@ -1843,8 +1902,8 @@ body {
     background-position: right;
     background-size: 150% 150%;
   }
-  .background-image1 .content-text {
-    font-size: 3rem;
+  .background-image1 .text-container .content-text {
+    font-size: 2.5rem;
   }
   .section-guarantees .column-wrapper {
     width: var(--global-container-width1);
@@ -2134,12 +2193,10 @@ body {
     margin-left: 3rem;
   }
   .background-image1 {
-    width: 100%;
-    height: 100vh;
-    margin-top: 0.5rem;
+    background-size: 175% 150%;
   }
-  .background-image1 .content-text {
-    font-size: 2rem;
+  .background-image1 .text-container .content-text {
+    font-size: 1.5rem;
   }
   .section-guarantees .column-wrapper {
     -ms-flex-wrap: wrap;

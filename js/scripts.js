@@ -1,8 +1,16 @@
+if (window.innerWidth <= 1024) {
+  $(".overlay-menu").height(window.innerHeight);
+}
+
+window.addEventListener("resize", () => {
+  $(".overlay-menu").height(window.innerHeight);
+});
+
 //Sticky nav bar start
 var mainNav = $(".navbar-wrapper");
 navbarHeight = $(".navbar").height();
 
-$(window).scroll(function() {
+$(window).scroll(function () {
   if ($(window).scrollTop() > navbarHeight * 2) {
     mainNav.addClass("burger-menu-sticky1");
   } else {
@@ -26,14 +34,25 @@ $(window).scroll(function() {
 //Burger menu control start
 const burger = document.querySelector(".burger-menu");
 var timesClicked = 0;
+var scrollTop1 = 0;
+var scrollTop2 = 0;
 
-$(".burger-menu").click(function() {
+$(".burger-menu").click(function () {
+  var scrollTop1 = $(window).scrollTop();
   if (timesClicked % 2 != 0) {
     burger.classList.toggle("burger-menu-animation");
     burger.classList.toggle("burger-active");
     $(".menu-item").addClass("animation-reverse");
     $(".overlay-menu-wrapper").addClass("overlay-menu-invisible");
     $(".overlay-menu-wrapper").removeClass("overlay-menu-visible");
+
+    window.setTimeout(function () {
+      $(".social-media-icons").removeClass("transition-delay");
+    }, 1000);
+
+    $(".website-wrapper").removeClass("scroll-disabled");
+    document.getElementById("empty-section").style.marginTop = "0px";
+    window.scrollTo(0, scrollTop2);
   } else {
     $(".overlay-menu-wrapper").removeClass("overlay-menu-invisible");
     $(".overlay-menu").addClass("keyframes-forward");
@@ -43,11 +62,24 @@ $(".burger-menu").click(function() {
     burger.classList.toggle("burger-menu-animation");
     $(".menu-item").addClass("menu-item-display");
     $(".overlay-menu-wrapper").addClass("overlay-menu-visible");
+
+    window.setTimeout(function () {
+      $(".social-media-icons").addClass("transition-delay");
+    }, 1000);
+
+    console.log(scrollTop1);
+    document.getElementById("empty-section").style.marginTop =
+      -scrollTop1 + "px";
+    window.setTimeout(function () {
+      $(".website-wrapper").addClass("scroll-disabled");
+      mainNav.addClass("burger-menu-inView");
+    }, 1000);
   }
   timesClicked++;
   if (timesClicked > 1) {
     timesClicked = 0;
   }
+  scrollTop2 = scrollTop1;
 });
 //Burger menu control end
 
@@ -65,19 +97,6 @@ function myFunction() {
   return w;
 }
 
-var multiplier;
-
-/*window.onresize = function(event) {
-  var windowWidth = $(window).outerWidth();
-  console.log("window width " + windowWidth);
-  if (windowWidth <= 1024) {
-    var multiplier = 6;
-  } else {
-    var multiplier = 1;
-  }
-  return multiplier;
-};*/
-
 function myscrollfunction() {
   for (let p_element of parallax) {
     var position = -window.scrollY * p_element.dataset.speed + 50;
@@ -92,7 +111,7 @@ function myscrollfunction() {
 //Parallax effect end
 
 //Testimonial section carousel start
-$(".carousel-dot").click(function() {
+$(".carousel-dot").click(function () {
   let number = this.id;
   var wordLength = number.length;
   number = number.substring(wordLength - 1, wordLength);
@@ -109,7 +128,7 @@ $(".carousel-dot").click(function() {
 //Testimonial section carousel end
 
 //Menu list choice start
-$(".menu-list-type").click(function() {
+$(".menu-list-type").click(function () {
   let number = this.id;
   var wordLength = number.length;
   number = number.substring(wordLength - 1, wordLength);
@@ -126,7 +145,7 @@ $(".menu-list-type").click(function() {
 //Menu list choice end
 
 //Choose us section control start
-$(".reason-header").click(function() {
+$(".reason-header").click(function () {
   let number = this.id;
   var wordLength = number.length;
   number = number.substring(wordLength - 1, wordLength);
@@ -153,13 +172,13 @@ if (!$(".column-guarantees").hasClass("animate-section-forward")) {
   $(".column-guarantees").addClass("animate-section-reverse");
 }
 
-$(window).on("scroll", function() {
+$(window).on("scroll", function () {
   var sectionSelected = $(".animate-section-start");
   var sectionHeight = sectionSelected.outerHeight();
   var winTop = $(this).scrollTop();
   var windowHeight = $(window).height();
   var distance = 100;
-  sectionSelected.each(function() {
+  sectionSelected.each(function () {
     var sectionTop = $(this).offset().top;
     if ($(this).hasClass("transform-position")) {
       if (winTop >= sectionTop - windowHeight + distance) {
