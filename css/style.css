@@ -143,6 +143,9 @@ body {
       -ms-flex-pack: start;
           justify-content: flex-start;
   overflow: hidden;
+  background-color: white;
+  -webkit-transition: 0.8s all ease;
+  transition: 0.8s all ease;
 }
 
 .scroll-disabled {
@@ -260,6 +263,10 @@ body {
   -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   height: 2rem !important;
+}
+
+.black-background {
+  background-color: black;
 }
 
 .burger-menu-animation .line1 {

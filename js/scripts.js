@@ -46,6 +46,8 @@ $(".burger-menu").click(function () {
     $(".overlay-menu-wrapper").addClass("overlay-menu-invisible");
     $(".overlay-menu-wrapper").removeClass("overlay-menu-visible");
 
+    $(".website-wrapper").removeClass("black-background");
+
     window.setTimeout(function () {
       $(".social-media-icons").removeClass("transition-delay");
     }, 1000);
@@ -62,6 +64,8 @@ $(".burger-menu").click(function () {
     burger.classList.toggle("burger-menu-animation");
     $(".menu-item").addClass("menu-item-display");
     $(".overlay-menu-wrapper").addClass("overlay-menu-visible");
+
+    $(".website-wrapper").addClass("black-background");
 
     window.setTimeout(function () {
       $(".social-media-icons").addClass("transition-delay");

@@ -116,6 +116,8 @@ body {
   @include flexCenterColumn();
   justify-content: flex-start;
   overflow: hidden;
+  background-color: white;
+  transition: 0.8s all ease;
 }
 
 .scroll-disabled {
@@ -187,6 +189,10 @@ body {
 .burger-active {
   transition: 0.2s all ease;
   height: 2rem !important;
+}
+
+.black-background {
+  background-color: black;
 }
 
 .burger-menu-animation {
