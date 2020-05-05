@@ -108,12 +108,6 @@ body {
   }
 }
 
-.button-large:hover,
-.button-small:hover {
-  background-color: var(--global-color-orange);
-  color: black;
-  border: 2px solid var(--global-color-orange);
-}
 //Global values end
 
 //Webpage body start
@@ -151,11 +145,13 @@ body {
     width: 4rem;
     border: 3px solid white;
     @include flexCenter();
+    transition: 0.5s all ease;
     cursor: pointer;
     .symbol {
       color: white;
       font-size: 1.5rem;
       font-weight: 600;
+      transition: 0.5s all ease;
     }
   }
   .burger-menus {
@@ -176,9 +172,6 @@ body {
         z-index: 1;
       }
     }
-    .burger-menu:hover {
-      height: 1.5rem;
-    }
     .burger-menu-close {
       position: absolute;
       top: 0;
@@ -194,10 +187,6 @@ body {
 .burger-active {
   transition: 0.2s all ease;
   height: 2rem !important;
-}
-
-.burger-active:hover {
-  height: 2rem;
 }
 
 .burger-menu-animation {
@@ -279,10 +268,7 @@ body {
     padding: 1rem 0;
     opacity: 0;
     animation: menu-keyframes-forward 1s forwards;
-  }
-  .menu-item:hover {
-    transform: scale(1.05);
-    transition: 0.3s transform ease;
+    transition: 0.5s all ease;
   }
   .social-media-icons {
     position: absolute;
@@ -298,6 +284,7 @@ body {
     .icon {
       color: white;
       font-size: 2rem;
+      transition: 0.5s all ease;
     }
   }
 }
@@ -701,10 +688,6 @@ body {
         justify-content: space-between;
         width: 100%;
         margin-bottom: 1rem;
-        h3:hover {
-          color: var(--global-color-grey);
-          cursor: pointer;
-        }
         .menu-list-item-price {
           color: var(--global-color-orange);
           font-size: 1.5rem;
@@ -976,9 +959,6 @@ body {
           cursor: pointer;
           transition: all 0.5s ease;
         }
-        .email-button:hover {
-          background-color: rgb(255, 204, 110);
-        }
       }
       .contact-email {
         color: var(--global-color-orange);
@@ -1049,6 +1029,56 @@ body {
   opacity: 1;
 }
 //Animate on scroll end
+
+@media only screen and (min-width: 1025px) {
+  .button-large:hover,
+  .button-small:hover {
+    background-color: var(--global-color-orange);
+    color: black;
+    border: 2px solid var(--global-color-orange);
+  }
+
+  .overlay-menu {
+    .menu-item:hover {
+      color: var(--global-color-orange);
+    }
+    .social-media-icons {
+      a:hover {
+        .icon {
+          color: var(--global-color-orange) !important;
+        }
+      }
+    }
+  }
+
+  .navbar {
+    .website-logo:hover {
+      border: 3px solid var(--global-color-orange);
+      .symbol {
+        color: var(--global-color-orange);
+      }
+    }
+    .burger-menus {
+      .burger-menu:hover {
+        height: 2rem !important;
+        .line {
+          background-color: var(--global-color-orange);
+        }
+      }
+    }
+  }
+  .footer-section {
+    .footer-top {
+      .contact-us {
+        .email {
+          .email-button:hover {
+            background-color: rgb(255, 204, 110);
+          }
+        }
+      }
+    }
+  }
+}
 
 //Media querys start
 @media only screen and (max-width: 1450px) {

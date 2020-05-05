@@ -124,13 +124,6 @@ body {
   text-align: center;
 }
 
-.button-large:hover,
-.button-small:hover {
-  background-color: var(--global-color-orange);
-  color: black;
-  border: 2px solid var(--global-color-orange);
-}
-
 .website-wrapper {
   width: 100%;
   display: -webkit-box;
@@ -199,6 +192,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
   cursor: pointer;
 }
 
@@ -206,6 +201,8 @@ body {
   color: white;
   font-size: 1.5rem;
   font-weight: 600;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
 }
 
 .navbar .burger-menus {
@@ -249,10 +246,6 @@ body {
   z-index: 1;
 }
 
-.navbar .burger-menus .burger-menu:hover {
-  height: 1.5rem;
-}
-
 .navbar .burger-menus .burger-menu-close {
   position: absolute;
   top: 0;
@@ -267,10 +260,6 @@ body {
   -webkit-transition: 0.2s all ease;
   transition: 0.2s all ease;
   height: 2rem !important;
-}
-
-.burger-active:hover {
-  height: 2rem;
 }
 
 .burger-menu-animation .line1 {
@@ -396,15 +385,8 @@ body {
   opacity: 0;
   -webkit-animation: menu-keyframes-forward 1s forwards;
           animation: menu-keyframes-forward 1s forwards;
-}
-
-.overlay-menu .menu-item:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  -webkit-transition: 0.3s -webkit-transform ease;
-  transition: 0.3s -webkit-transform ease;
-  transition: 0.3s transform ease;
-  transition: 0.3s transform ease, 0.3s -webkit-transform ease;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
 }
 
 .overlay-menu .social-media-icons {
@@ -434,6 +416,8 @@ body {
 .overlay-menu .social-media-icons .icon {
   color: white;
   font-size: 2rem;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
 }
 
 .overlay-menu-visible {
@@ -1188,11 +1172,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.menu-list-section .menu-container .menu-list-item .menu-list-item-top h3:hover {
-  color: var(--global-color-grey);
-  cursor: pointer;
-}
-
 .menu-list-section .menu-container .menu-list-item .menu-list-item-top .menu-list-item-price {
   color: var(--global-color-orange);
   font-size: 1.5rem;
@@ -1746,10 +1725,6 @@ body {
   transition: all 0.5s ease;
 }
 
-.footer-section .footer-top .contact-us .email .email-button:hover {
-  background-color: #ffcc6e;
-}
-
 .footer-section .footer-top .contact-us .contact-email {
   color: var(--global-color-orange);
   margin-bottom: 1.5rem;
@@ -1861,6 +1836,36 @@ body {
 
 .animate-opacity {
   opacity: 1;
+}
+
+@media only screen and (min-width: 1025px) {
+  .button-large:hover,
+  .button-small:hover {
+    background-color: var(--global-color-orange);
+    color: black;
+    border: 2px solid var(--global-color-orange);
+  }
+  .overlay-menu .menu-item:hover {
+    color: var(--global-color-orange);
+  }
+  .overlay-menu .social-media-icons a:hover .icon {
+    color: var(--global-color-orange) !important;
+  }
+  .navbar .website-logo:hover {
+    border: 3px solid var(--global-color-orange);
+  }
+  .navbar .website-logo:hover .symbol {
+    color: var(--global-color-orange);
+  }
+  .navbar .burger-menus .burger-menu:hover {
+    height: 2rem !important;
+  }
+  .navbar .burger-menus .burger-menu:hover .line {
+    background-color: var(--global-color-orange);
+  }
+  .footer-section .footer-top .contact-us .email .email-button:hover {
+    background-color: #ffcc6e;
+  }
 }
 
 @media only screen and (max-width: 1450px) {
