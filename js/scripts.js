@@ -4,7 +4,6 @@ if (window.innerWidth <= 1024) {
 
 window.addEventListener("resize", () => {
   $(".overlay-menu").height(window.innerHeight);
-
 });
 
 //Sticky nav bar start
@@ -68,10 +67,9 @@ $(".burger-menu").click(function () {
       $(".social-media-icons").addClass("transition-delay");
     }, 1000);
 
-    console.log(scrollTop1);
-    document.getElementById("empty-section").style.marginTop =
-      -scrollTop1 + "px";
     window.setTimeout(function () {
+      document.getElementById("empty-section").style.marginTop =
+        -scrollTop1 + "px";
       $(".website-wrapper").addClass("scroll-disabled");
       mainNav.addClass("burger-menu-inView");
     }, 1000);
@@ -88,15 +86,6 @@ $(".burger-menu").click(function () {
 var parallax = document.querySelectorAll("[data-speed]");
 
 window.addEventListener("scroll", myscrollfunction);
-
-function myFunction() {
-  var w = window.outerWidth();
-  var h = window.outerHeight();
-  var txt = "Window size: width=" + w + ", height=" + h;
-  console.log(txt);
-  console.log("width" + w);
-  return w;
-}
 
 function myscrollfunction() {
   for (let p_element of parallax) {
