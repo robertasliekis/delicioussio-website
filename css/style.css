@@ -149,7 +149,7 @@ body {
 }
 
 .scroll-disabled {
-  height: calc(50vh - 56px);
+  height: calc(100vh - 56px);
 }
 
 .navbar-wrapper {
@@ -552,7 +552,7 @@ body {
 }
 
 .background-image1 {
-  background-image: url(../images/background01b.webp);
+  background-image: url(../images/background01b.jpg);
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -696,7 +696,7 @@ body {
 .wavy-line-section {
   width: 100%;
   height: 5rem;
-  background-image: url(../images/wave01.webp);
+  background-image: url(../images/wave01.png);
   background-position: center;
   background-size: 8rem;
   background-repeat: repeat-x;
@@ -755,33 +755,33 @@ body {
 }
 
 .specialties-section .specialties-bottom .menu-food .menu-food-image1 {
-  background-image: url(../images/food01.webp);
+  background-image: url(../images/food01.jpg);
 }
 
 .specialties-section .specialties-bottom .menu-food .menu-food-image2 {
-  background-image: url(../images/food02.webp);
+  background-image: url(../images/food02.jpg);
   -webkit-transition-delay: 0.1s;
           transition-delay: 0.1s;
 }
 
 .specialties-section .specialties-bottom .menu-food .menu-food-image3 {
-  background-image: url(../images/food03.webp);
+  background-image: url(../images/food03.jpg);
   -webkit-transition-delay: 0.2s;
           transition-delay: 0.2s;
 }
 
 .specialties-section .specialties-bottom .menu-food .menu-food-image4 {
-  background-image: url(../images/food04.webp);
+  background-image: url(../images/food04.jpg);
 }
 
 .specialties-section .specialties-bottom .menu-food .menu-food-image5 {
-  background-image: url(../images/food05.webp);
+  background-image: url(../images/food05.jpg);
   -webkit-transition-delay: 0.1s;
           transition-delay: 0.1s;
 }
 
 .specialties-section .specialties-bottom .menu-food .menu-food-image6 {
-  background-image: url(../images/food06.webp);
+  background-image: url(../images/food06.jpg);
   -webkit-transition-delay: 0.2s;
           transition-delay: 0.2s;
 }
@@ -992,11 +992,11 @@ body {
 }
 
 .explore-section .explore-section-half .explore-section-background1 {
-  background-image: url(../images/explore01.webp);
+  background-image: url(../images/explore01.jpg);
 }
 
 .explore-section .explore-section-half .explore-section-background2 {
-  background-image: url(../images/explore04.webp);
+  background-image: url(../images/explore04.jpg);
   -webkit-transition-delay: 0.1s;
           transition-delay: 0.1s;
 }
@@ -1061,11 +1061,11 @@ body {
 }
 
 .explore-section .explore-section-half .explore-info .explore-info-right1 {
-  background-image: url(../images/explore02.webp);
+  background-image: url(../images/explore02.jpg);
 }
 
 .explore-section .explore-section-half .explore-info .explore-info-right2 {
-  background-image: url(../images/explore03.webp);
+  background-image: url(../images/explore03.jpg);
   -webkit-transition-delay: 0.1s;
           transition-delay: 0.1s;
 }
@@ -1276,19 +1276,19 @@ body {
 }
 
 .news-section .articles-container .article .article-image1 {
-  background-image: url(../images/news01.webp);
+  background-image: url(../images/news01.jpg);
 }
 
 .news-section .articles-container .article .article-image2 {
-  background-image: url(../images/news02.webp);
+  background-image: url(../images/news02.jpg);
 }
 
 .news-section .articles-container .article .article-image3 {
-  background-image: url(../images/news03.webp);
+  background-image: url(../images/news03.jpg);
 }
 
 .news-section .articles-container .article .article-image4 {
-  background-image: url(../images/news04.webp);
+  background-image: url(../images/news04.jpg);
 }
 
 .news-section .articles-container .article .article-text {
@@ -1400,7 +1400,7 @@ body {
 .choose-us-section .choose-us-container .choose-us-image {
   width: 45%;
   height: 100%;
-  background-image: url(../images/food05.webp);
+  background-image: url(../images/food05.jpg);
   background-size: cover;
   background-position: center;
 }
